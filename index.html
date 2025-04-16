@@ -3,154 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="個人履歷網站 - 展示專業技能與工作經驗">
-    <meta name="keywords" content="個人履歷,作品集,專業技能,工作經驗">
-    <title data-i18n="pageTitle">個人履歷網站</title>
+    <title>許倍祺的個人履歷</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="error.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">My Portfolio</div>
-            <ul class="nav-links">
-                <li><a href="#about" data-i18n="nav.about">關於我</a></li>
-                <li><a href="#skills" data-i18n="nav.skills">技能專長</a></li>
-                <li><a href="#experience" data-i18n="nav.experience">工作經驗</a></li>
-                <li><a href="#portfolio" data-i18n="nav.portfolio">作品集</a></li>
-                <li><a href="#contact" data-i18n="nav.contact">聯絡方式</a></li>
+    <div class="dashboard-layout">
+        <!-- 左側選單 -->
+        <nav class="side-menu">
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <ul>
+                <li class="active"><a href="#profile">個人檔案</a></li>
+                <li><a href="#experience">工作經驗</a></li>
+                <li><a href="#projects">專案作品</a></li>
+                <li><a href="#skills">技能專長</a></li>
+                <li><a href="#contact">聯絡方式</a></li>
             </ul>
-            <div class="language-switch">
-                <button class="lang-btn" data-lang="zh-TW">中文</button>
-                <button class="lang-btn" data-lang="en-US">EN</button>
-            </div>
         </nav>
-    </header>
 
-    <main>
-        <section id="hero">
-            <h1>王小明</h1>
-            <p>全端工程師 | UI/UX設計師</p>
-            <a href="#contact" class="cta-button">與我聯繫</a>
-        </section>
+        <!-- 主要內容區 -->
+        <main class="main-content">
+            <!-- 頂部導航 -->
+            <header class="top-header">
+                <h1>個人履歷儀表板</h1>
+                <div class="profile-menu">
+                    <span>Hello, 許倍祺</span>
+                    <img src="avatar.jpg" alt="Profile" class="avatar">
+                </div>
+            </header>
 
-        <section id="about">
-            <h2>關於我</h2>
-            <div class="about-content">
-                <p>我是一名充滿熱情的全端工程師，擁有5年的網站開發經驗。專注於創造優秀的使用者體驗和高效能的網站應用。熟悉現代化的前後端技術棧，並且持續學習新技術。</p>
-            </div>
-        </section>
+            <!-- 內容卡片區 -->
+            <div class="card-container">
+                <!-- 個人資料卡片 -->
+                <div class="card profile-card">
+                    <div class="profile-image">
+                        <img src="profile.jpg" alt="許倍祺">
+                    </div>
+                    <div class="profile-info">
+                        <h2>許倍祺 (Pei-Chi Hsu)</h2>
+                        <p class="title">資深產品經理 | UI/UX專家</p>
+                        <p class="contact">lovewish2260@gmail.com</p>
+                        <p class="phone">+886-972857690</p>
+                    </div>
+                </div>
 
-        <section id="skills">
-            <h2>技能專長</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3>前端開發</h3>
-                    <ul>
-                        <li>HTML5 / CSS3</li>
-                        <li>JavaScript / TypeScript</li>
-                        <li>React / Vue.js</li>
-                        <li>Responsive Design</li>
-                    </ul>
+                <!-- 工作經驗卡片 -->
+                <div class="card experience-card">
+                    <h2>最新工作經驗</h2>
+                    <div class="experience-item active">
+                        <h3>美商 VOCO Media</h3>
+                        <p class="position">資深產品經理</p>
+                        <p class="period">2022年9月 - 現在</p>
+                    </div>
                 </div>
-                <div class="skill-card">
-                    <h3>後端開發</h3>
-                    <ul>
-                        <li>Node.js / Express</li>
-                        <li>Python / Django</li>
-                        <li>RESTful API</li>
-                        <li>Database Design</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <h3>其他技能</h3>
-                    <ul>
-                        <li>Git Version Control</li>
-                        <li>Docker</li>
-                        <li>CI/CD</li>
-                        <li>AWS Services</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
 
-        <section id="experience">
-            <h2>工作經驗</h2>
-            <div class="experience-timeline">
-                <div class="experience-item">
-                    <h3>資深全端工程師</h3>
-                    <p class="company">創新科技有限公司</p>
-                    <p class="period">2021 - 現在</p>
-                    <ul>
-                        <li>負責公司核心產品的前後端開發</li>
-                        <li>優化網站性能，提升載入速度50%</li>
-                        <li>帶領5人開發團隊，實施敏捷開發流程</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <h3>前端工程師</h3>
-                    <p class="company">數位方案公司</p>
-                    <p class="period">2019 - 2021</p>
-                    <ul>
-                        <li>開發響應式網站和Web應用</li>
-                        <li>實作使用者介面和互動功能</li>
-                        <li>與設計師協作優化使用者體驗</li>
-                    </ul>
+                <!-- 專案統計卡片 -->
+                <div class="card stats-card">
+                    <h2>專案成就</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <h4>用戶數</h4>
+                            <p>30萬+</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>融資金額</h4>
+                            <p>700萬美元</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>成本優化</h4>
+                            <p>60%</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <section id="portfolio">
-            <h2>作品集</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <h3>電商平台開發</h3>
-                    <p>使用React和Node.js開發的全端電商平台</p>
-                </div>
-                <div class="portfolio-item">
-                    <h3>社群媒體儀表板</h3>
-                    <p>Vue.js開發的數據視覺化儀表板</p>
-                </div>
-                <div class="portfolio-item">
-                    <h3>企業管理系統</h3>
-                    <p>Python/Django開發的內部管理系統</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>聯絡方式</h2>
-            <div class="contact-info">
-                <p><strong>Email:</strong> john.doe@example.com</p>
-                <p><strong>電話:</strong> (02) 2345-6789</p>
-                <p><strong>LinkedIn:</strong> linkedin.com/in/johndoe</p>
-                <p><strong>GitHub:</strong> github.com/johndoe</p>
-            </div>
-            <form id="contact-form">
-                <div class="form-group">
-                    <label for="name">姓名</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">訊息</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit">發送訊息</button>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 個人履歷網站. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script type="module" src="locales.js"></script>
-    <script type="module" src="script.js"></script>
+        </main>
+    </div>
 </body>
 </html>
