@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="個人履歷網站 - 展示專業技能與工作經驗">
     <meta name="keywords" content="個人履歷,作品集,專業技能,工作經驗">
-    <title>個人履歷網站</title>
+    <title data-i18n="pageTitle">個人履歷網站</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="error.css">
 </head>
@@ -13,13 +13,17 @@
     <header>
         <nav>
             <div class="logo">My Portfolio</div>
-            <ul>
-                <li><a href="#about">關於我</a></li>
-                <li><a href="#skills">技能專長</a></li>
-                <li><a href="#experience">工作經驗</a></li>
-                <li><a href="#portfolio">作品集</a></li>
-                <li><a href="#contact">聯絡方式</a></li>
+            <ul class="nav-links">
+                <li><a href="#about" data-i18n="nav.about">關於我</a></li>
+                <li><a href="#skills" data-i18n="nav.skills">技能專長</a></li>
+                <li><a href="#experience" data-i18n="nav.experience">工作經驗</a></li>
+                <li><a href="#portfolio" data-i18n="nav.portfolio">作品集</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">聯絡方式</a></li>
             </ul>
+            <div class="language-switch">
+                <button class="lang-btn" data-lang="zh-TW">中文</button>
+                <button class="lang-btn" data-lang="en-US">EN</button>
+            </div>
         </nav>
     </header>
 
@@ -146,6 +150,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script type="module" src="locales.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

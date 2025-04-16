@@ -30,6 +30,37 @@ nav {
     margin: 0 auto;
 }
 
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin-right: 2rem;
+}
+
+.language-switch {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.lang-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #3498db;
+    background: transparent;
+    color: #3498db;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    background: #3498db;
+    color: white;
+}
+
+.lang-btn.active {
+    background: #3498db;
+    color: white;
+}
+
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
@@ -94,90 +125,140 @@ section {
     background-color: #c0392b;
 }
 
-/* 服務卡片 */
-.service-grid {
+/* 關於我 */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+/* 技能卡片 */
+.skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
 
-.service-card {
+.skill-card {
     background: #fff;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    text-align: center;
 }
 
-/* 功能列表 */
-.feature-list {
-    list-style: none;
-    margin-top: 2rem;
-}
-
-.feature-list li {
+.skill-card h3 {
     margin-bottom: 1rem;
-    padding-left: 2rem;
+    color: #2c3e50;
+}
+
+.skill-card ul {
+    list-style: none;
+}
+
+.skill-card ul li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
     position: relative;
 }
 
-.feature-list li:before {
-    content: '✓';
+.skill-card ul li:before {
+    content: '•';
     position: absolute;
     left: 0;
-    color: #27ae60;
+    color: #3498db;
 }
 
-/* 價格方案 */
-.pricing-grid {
+/* 工作經驗 */
+.experience-timeline {
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.experience-item {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.experience-item h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.experience-item .company {
+    color: #3498db;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.experience-item .period {
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+}
+
+.experience-item ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.experience-item ul li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.experience-item ul li:before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #3498db;
+}
+
+/* 作品集 */
+.portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
 
-.pricing-card {
+.portfolio-item {
     background: #fff;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+}
+
+.portfolio-item h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.portfolio-item p {
+    color: #7f8c8d;
+    line-height: 1.6;
+}
+
+/* 聯絡方式 */
+.contact-info {
+    max-width: 600px;
+    margin: 0 auto 2rem;
     text-align: center;
 }
 
-.pricing-card.featured {
-    transform: scale(1.05);
-    border: 2px solid #3498db;
-}
-
-.price {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #2c3e50;
+.contact-info p {
     margin: 1rem 0;
-}
-
-.pricing-card ul {
-    list-style: none;
-    margin: 1.5rem 0;
-}
-
-.pricing-card ul li {
-    margin-bottom: 0.5rem;
-}
-
-.payment-button {
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.payment-button:hover {
-    background-color: #2980b9;
+    font-size: 1.1rem;
 }
 
 /* 聯絡表單 */
