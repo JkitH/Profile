@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>許倍祺(Jerry) | 資深產品經理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00d9ff;
+            --secondary: #ff2a6d;
+            --dark: #0c1016;
+            --darker: #070a0f;
+            --light: #e0f7fa;
+            --gray: #8a99b5;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        /* 導航列樣式 */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(12, 16, 22, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .language-toggle {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-left: 2rem;
+        }
+
+        .language-toggle:hover {
+            background: rgba(0, 217, 255, 0.1);
+        }
+
+        /* 英雄區域 */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.3s;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: block;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.6s;
+            color: var(--gray);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.9s;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: var(--darker);
+            box-shadow: 0 10px 25px rgba(0, 217, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 217, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 217, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* 動態背景元素 */
+        .hero-bg-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 217, 255, 0.05);
+            filter: blur(60px);
+        }
+
+        .bg-circle:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            top: -200px;
+            right: -100px;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .bg-circle:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            bottom: -100px;
+            left: 10%;
+            animation: float 12s infinite ease-in-out 2s;
+        }
+
+        /* 內容區域 */
+        .section {
+            padding: 8rem 10%;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* 時間線樣式 */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: rgba(0, 217, 255, 0.2);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 5rem;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: var(--transition);
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 15px;
+            padding: 2.5rem;
+            width: calc(50% - 40px);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 217, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: auto;
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: 20px;
+            width: 100px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--primary);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--darker);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .timeline-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .timeline-company {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+            display: block;
+        }
+
+        .timeline-description {
+            margin-bottom: 1.5rem;
+            color: #b0b8c5;
+        }
+
+        .timeline-highlights {
+            list-style-type: none;
+        }
+
+        .timeline-highlights li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.8rem;
+            line-height: 1.6;
+        }
+
+        .timeline-highlights li:before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* 技能部分 */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .skill-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 217, 255, 0.3);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .skill-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            list-style-type: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-list li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        /* 專案展示 */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 217, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            background: rgba(0, 217, 255, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .project-description {
+            color: #b0b8c5;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* 聯繫區域 */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .contact-text h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-text a {
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-text a:hover {
+            color: var(--primary);
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 15px;
+            padding: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: var(--darker);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-block;
+            box-shadow: 0 10px 25px rgba(0, 217, 255, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 217, 255, 0.4);
+        }
+
+        /* 頁尾 */
+        footer {
+            background: var(--darker);
+            padding: 3rem 10%;
+            text-align: center;
+            border-top: 1px solid rgba(0, 217, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: var(--darker);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* 動畫效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+            }
+            
+            .timeline-date {
+                left: 30px;
+                transform: none;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 5rem 7%;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+            }
+            
+            .skills-container, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 語言內容切換 */
+        .lang-content {
+            display: none;
+        }
+        
+        .lang-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航列 -->
+    <header>
+        <a href="#" class="logo">
+            <i class="fas fa-rocket"></i>
+            <span class="lang" data-key="name">許倍祺(Jerry)</span>
+        </a>
+        <nav class="nav-links">
+            <a href="#about" class="active lang" data-key="nav-about">關於我</a>
+            <a href="#experience" class="lang" data-key="nav-exp">工作經歷</a>
+            <a href="#skills" class="lang" data-key="nav-skills">專業技能</a>
+            <a href="#projects" class="lang" data-key="nav-projects">專案作品</a>
+            <a href="#contact" class="lang" data-key="nav-contact">聯絡方式</a>
+        </nav>
+        <button class="language-toggle" id="langToggle">
+            <i class="fas fa-globe"></i> <span class="lang" data-key="lang-switch">EN/中文</span>
+        </button>
+    </header>
+
+    <!-- 中文內容 -->
+    <div class="lang-content active" id="zh-content">
+        <!-- 英雄區域 -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>
+                    <span>創新驅動產品增長</span>
+                    打造卓越用戶體驗
+                </h1>
+                <p class="lang" data-key="hero-subtitle">資深產品經理 | AI與區塊鏈技術專家 | 跨境業務開拓者</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary lang" data-key="btn-contact">聯絡我</a>
+                    <a href="#experience" class="btn btn-secondary lang" data-key="btn-experience">查看經歷</a>
+                </div>
+            </div>
+            
+            <div class="hero-bg-elements">
+                <div class="bg-circle"></div>
+                <div class="bg-circle"></div>
+            </div>
+        </section>
+
+        <!-- 經歷部分 -->
+        <section id="experience" class="section">
+            <h2 class="section-title lang" data-key="exp-title">工作經歷</h2>
+            
+            <div class="timeline">
+                <!-- VOCO Media -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - 至今</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title lang" data-key="voco-title">資深產品經理</h3>
+                        <span class="timeline-company">美商 VOCO Media Inc.</span>
+                        <p class="timeline-description lang" data-key="voco-desc">AI驅動媒體平台 | 用戶增長策略 | 跨境商業模式 | 0→2產品規模化</p>
+                        <ul class="timeline-highlights">
+                            <li class="lang" data-key="voco-li1">從0到1打造以「華裔美國人社群」為核心受眾的新聞媒體平台，整合「金幣獎勵機制」與「利潤共享計畫」，上線一年接觸超過30萬用戶，活躍留存率達80%，帶動電商成交提升25%</li>
+                            <li class="lang" data-key="voco-li2">設計「跨平台用戶金幣」系統，結合媒體內容、商家優惠券、電商消費場景，促使用戶在每個產品觸及點都有價值貢獻，日活躍用戶提升40%</li>
+                            <li class="lang" data-key="voco-li3">主導商業推進與投資計劃報告，2023年Q2成功募資200萬美元種子輪，2024年Q1再獲得600萬美元投資，目前已進入Pre-A輪</li>
+                            <li class="lang" data-key="voco-li4">建立「媒體 + 電商 + 零售媒體廣告網絡(Retail Media Network, RMN)」商業模式，平台廣告收入連續成長，合作美西商家數半年內達到100家</li>
+                            <li class="lang" data-key="voco-li5">導入LLM語言模型與TTS技術，開發多語言即時文字聲音生成系統，支援英語/中文無縫切換，降低跨國廣告與內容製作成本60%</li>
+                            <li class="lang" data-key="voco-li6">主導「AI自動化新聞摘要系統」開發（已申請專利），縮短編輯工時20%；評估虛擬貨幣流通經濟模型可行性，規劃Web3用戶激勵計畫</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Jia-Xin & Jie-Hang -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 - 2022</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title lang" data-key="jxh-title">產品與使用者體驗助理總監</h3>
+                        <span class="timeline-company">Jia-Xin & Jie-Hang Technology Inc. (遠端)</span>
+                        <p class="timeline-description lang" data-key="jxh-desc">SaaS/運動數據/金融科技/區塊鏈/遊戲</p>
+                        <ul class="timeline-highlights">
+                            <li class="lang" data-key="jxh-li1">負責客戶端Web與App產品開發，針對境外運動賽事相關產品制定策略，為歐美大型品牌提供數據分析解決方案</li>
+                            <li class="lang" data-key="jxh-li2">產品涵蓋用戶數據平台、中台維運介面、後台帳務與控制系統，確保系統穩定運行並符合商業需求</li>
+                            <li class="lang" data-key="jxh-li3">2021年主導品牌VPN和公司內部ERP系統開發，成功將產品應用拓展至區塊鏈交易所與錢包整合</li>
+                            <li class="lang" data-key="jxh-li4">主導推出B2B體育賽事SaaS服務，成功推動平台用戶增長與客戶滿意度提升，營收成長超過50%</li>
+                            <li class="lang" data-key="jxh-li5">設計平台預測系統、推薦跟單等增值功能，透過數據分析與算法優化提高平台可靠性與用戶互動率</li>
+                            <li class="lang" data-key="jxh-li6">提出企業用戶跨裝置串連(OneSign)、跨國語系適配概念，降低用戶進入門檻並提升體驗，產品上線後獲得客戶高度評價</li>
+                            <li class="lang" data-key="jxh-li7">在部門內導入OKR管理機制，透過定期績效評估與反饋機制提升團隊士氣與工作效率</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- ETtoday -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2017 - 2019</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title lang" data-key="et-title">產品經理</h3>
+                        <span class="timeline-company">ETtoday 東森新媒體控股</span>
+                        <p class="timeline-description lang" data-key="et-desc">媒體/資料/UI/深度學習/電子商務</p>
+                        <ul class="timeline-highlights">
+                            <li class="lang" data-key="et-li1">負責東森新聞雲、星光雲及ET星光雲（大陸地區）產品功能開發與維運，協調新聞內容、App廣告系統、行銷活動需求</li>
+                            <li class="lang" data-key="et-li2">透過用戶行為數據與點擊率分析，推動數據驅動的產品改進，優化用戶體驗</li>
+                            <li class="lang" data-key="et-li3">執行多渠道推廣與用戶體驗優化，使App安裝量增加35%至700萬，用戶註冊數提升5%，日活躍用戶(DAU)增長10%至17萬</li>
+                            <li class="lang" data-key="et-li4">2018年在全球市場研究台灣媒體App三項一級指標中取得第一名，提升品牌競爭力</li>
+                            <li class="lang" data-key="et-li5">提出UI設計與新設計理念，提升界面直觀性與易用性，一年內用戶留存率提升15%</li>
+                            <li class="lang" data-key="et-li6">與東森購物合作，推動App內流量變現與互動機制優化，用戶留存提升30%，總留存率提高15%</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Fullerton -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2015 - 2017</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title lang" data-key="full-title">產品經理 & UI/UX設計工程師</h3>
+                        <span class="timeline-company">富爾特科技</span>
+                        <p class="timeline-description lang" data-key="full-desc">UI(RWD/App)/資訊架構/SEO/專案管理</p>
+                        <ul class="timeline-highlights">
+                            <li class="lang" data-key="full-li1">負責EZding電影購票網站與Tripitta訂房網站，主導產品架構與功能改版</li>
+                            <li class="lang" data-key="full-li2">重新設計EZding訂票流程，提升用戶購票彈性與體驗，上線後三個月內訂單量增長85%</li>
+                            <li class="lang" data-key="full-li3">定義並實施電影票對帳系統與銀行支付系統，提升交易準確性與結算效率</li>
+                            <li class="lang" data-key="full-li4">將Tripitta從EZding旗下品牌獨立為訂房網站，負責網站與App產品開發，建立民宿供應端後台系統</li>
+                            <li class="lang" data-key="full-li5">與Expedia、Agoda、攜程、馬蜂窩等OTA平台合作，推動聯盟行銷，提供TripAdvisor民宿評價數據</li>
+                            <li class="lang" data-key="full-li6">主導Tripitta旅遊一站式解決方案，優化用戶體驗與滿意度，網站流量與用戶留存率提升40%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 技能部分 -->
+        <section id="skills" class="section">
+            <h2 class="section-title lang" data-key="skills-title">專業技能</h2>
+            
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="skill-title lang" data-key="skill1-title">產品策略與管理</h3>
+                    <ul class="skill-list">
+                        <li class="lang" data-key="skill1-li1">產品路線圖規劃與執行</li>
+                        <li class="lang" data-key="skill1-li2">市場分析與競爭定位</li>
+                        <li class="lang" data-key="skill1-li3">用戶增長與留存策略</li>
+                        <li class="lang" data-key="skill1-li4">商業模式設計與驗證</li>
+                        <li class="lang" data-key="skill1-li5">融資提案與投資者關係</li>
+                        <li class="lang" data-key="skill1-li6">OKR目標管理機制</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="skill-title lang" data-key="skill2-title">技術整合與應用</h3>
+                    <ul class="skill-list">
+                        <li class="lang" data-key="skill2-li1">AI與機器學習整合 (LLM, TTS)</li>
+                        <li class="lang" data-key="skill2-li2">區塊鏈與Web3技術應用</li>
+                        <li class="lang" data-key="skill2-li3">自動化系統開發與優化</li>
+                        <li class="lang" data-key="skill2-li4">API設計與第三方服務整合</li>
+                        <li class="lang" data-key="skill2-li5">SaaS平台開發與管理</li>
+                        <li class="lang" data-key="skill2-li6">數據分析與算法優化</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3 class="skill-title lang" data-key="skill3-title">跨境業務與協作</h3>
+                    <ul class="skill-list">
+                        <li class="lang" data-key="skill3-li1">跨文化團隊管理與協調</li>
+                        <li class="lang" data-key="skill3-li2">國際市場拓展策略</li>
+                        <li class="lang" data-key="skill3-li3">多語言產品本地化</li>
+                        <li class="lang" data-key="skill3-li4">全球支付與金融系統</li>
+                        <li class="lang" data-key="skill3-li5">國際合規標準與法規</li>
+                        <li class="lang" data-key="skill3-li6">遠端協作流程優化</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 專案作品 -->
+        <section id="projects" class="section">
+            <h2 class="section-title lang" data-key="projects-title">專案作品</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3 class="project-title lang" data-key="project1-title">多國交易所功能規劃</h3>
+                    <div class="project-tags">
+                        <span class="project-tag lang" data-key="tag-exchange">#交易所</span>
+                        <span class="project-tag lang" data-key="tag-web3">#Web3</span>
+                        <span class="project-tag lang" data-key="tag-multilang">#多語系地區</span>
+                    </div>
+                    <p class="project-description lang" data-key="project1-desc">
+                        深入研究全球主要加密貨幣交易所功能，進行系統化拆解與分析。規劃多語言、多地區合規的交易系統架構，設計符合不同地區用戶習慣的交易界面與流程。
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <h3 class="project-title lang" data-key="project2-title">AppleCensorShip</h3>
+                    <div class="project-tags">
+                        <span class="project-tag lang" data-key="tag-ux">#UX設計</span>
+                        <span class="project-tag lang" data-key="tag-npo">#非營利組織</span>
+                        <span class="project-tag lang" data-key="tag-info">#資訊自由</span>
+                    </div>
+                    <p class="project-description lang" data-key="project2-desc">
+                        管理Apple審查網站，透過直觀的數據視覺化展示Apple審查政策對全球資訊自由與隱私權的影響。設計易於理解的資訊圖表與互動式時間軸，提高公眾對數位權利的認知。
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <h3 class="project-title lang" data-key="project3-title">小黑貓有料案內所</h3>
+                    <div class="project-tags">
+                        <span class="project-tag lang" data-key="tag-blog">#技術部落格</span>
+                        <span class="project-tag lang" data-key="tag-seo">#SEO</span>
+                        <span class="project-tag lang" data-key="tag-wp">#WordPress</span>
+                    </div>
+                    <p class="project-description lang" data-key="project3-desc">
+                        創建並管理技術部落格，專注於SEO最佳實踐與WordPress開發技術。提供即時產業趨勢分析與實用技術教學，建立專業技術社群，每月吸引超過10,000名訪客。
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="project-title lang" data-key="project4-title">安可日子</h3>
+                    <div class="project-tags">
+                        <span class="project-tag lang" data-key="tag-social">#社群媒體</span>
+                        <span class="project-tag lang" data-key="tag-senior">#熟齡市場</span>
+                        <span class="project-tag lang" data-key="tag-google">#Google孵化器</span>
+                    </div>
+                    <p class="project-description lang" data-key="project4-desc">
+                        管理專為熟齡族群設計的Encore社群媒體應用，三個月內會員數增長10,000人。設計符合中高齡用戶使用習慣的界面與互動功能，參與Google台灣孵化器計畫並獲得導師指導。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 聯繫部分 -->
+        <section id="contact" class="section">
+            <h2 class="section-title lang" data-key="contact-title">聯絡方式</h2>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3 class="lang" data-key="contact-email">電子郵件</h3>
+                            <a href="mailto:lovewish2260@gmail.com">lovewish2260@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3 class="lang" data-key="contact-phone">電話</h3>
+                            <a href="tel:+886972857690">+886-972857690</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3 class="lang" data-key="contact-location">地點</h3>
+                            <p class="lang" data-key="location-taiwan">台灣</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3 class="lang" data-key="contact-resume">履歷下載</h3>
+                            <a href="#">2025 CV zh (1).pdf</a><br>
+                            <a href="#">2025 CV en (1).pdf</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name" class="lang" data-key="form-name">姓名</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="lang" data-key="form-email">電子郵件</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="lang" data-key="form-subject">主題</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="lang" data-key="form-message">訊息</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn lang" data-key="form-submit">傳送訊息</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- 英文內容 -->
+    <div class="lang-content" id="en-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>
+                    <span>Driving Product Growth</span>
+                    Through Innovation
+                </h1>
+                <p class="lang" data-key="hero-subtitle">Senior Product Manager | AI & Blockchain Expert | Cross-border Strategist</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary lang" data-key="btn-contact">Contact Me</a>
+                    <a href="#experience" class="btn btn-secondary lang" data-key="btn-experience">View Experience</a>
+                </div>
+            </div>
+            
+            <div class="hero-bg-elements">
+                <div class="bg-circle"></div>
+                <div class="bg-circle"></div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <h2 class="section-title lang" data-key="exp-title">Work Experience</h2>
+            
+            <div class="timeline">
+                <!-- VOCO Media -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - Present</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title lang" data-key="voco-title">Senior Product Manager</h3>
+                        <span class="timeline-company">VOCO Media Inc.</span>
+                        <p class="timeline-description lang" data-key="voco-desc">AI-driven media platform | User growth strategy | Cross-border business models | Scaling products from 0 to 1</p>
+                        <ul class="timeline-highlights">
+                            <li class="lang" data-key="voco-li1">Developed a media platform focused on the "Chinese American community" from the ground up, integrating a "coin reward mechanism" and a "profit-sharing program"</li>
+                            <li class="lang" data-key="voco-li2">Surpassed 300,000 users within one year, achieving an 80% active retention rate and boosting e-commerce conversion rates by 25%</li>
+                            <li class="lang" data-key="voco-li3">Designed a cross-platform points exchange system, integrating media content, local merchant coupons, and e-commerce transactions, increasing daily user engagement by 40%</li>
+                            <li class="lang" data-key="voco-li4">Led business proposals and product strategies, securing $2M in seed funding (Q2 2023) and $6M in strategic financing (Q1 2024)</li>
+                            <li class="lang" data-key="voco-li5">Established a "Media + E-commerce + Retail Media Network (RMN)" monetization model, leading to continuous advertising revenue growth</li>
+                            <li class="lang" data-key="voco-li6">Implemented LLM language models and TTS technology, developing a real-time multilingual text-to-audio system, reducing cross-border content costs by 60%</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Jia-Xin & Jie-Hang -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 - 2022</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title lang" data-key="jxh-title">Product & UX Assistant Director</h3>
+                        <span class="timeline-company">Jia-Xin & Jie-Hang Technology Inc. (Remote)</span>
+                        <p class="timeline-description lang" data-key="jxh-desc">SaaS/Sports data/Fintech/BlockChain/Gaming</p>
+                        <ul class="timeline-highlights">
+                            <li class="lang" data-key="jxh-li1">Led web and mobile product development, devising strategies for international sports betting products</li>
+                            <li class="lang" data-key="jxh-li2">Managed user data platforms, mid-tier operational interfaces, and back-end financial control systems</li>
+                            <li class="lang" data-key="jxh-li3">Spearheaded brand VPN and internal ERP system development, expanding product applications to blockchain exchanges and wallets</li>
+                            <li class="lang" data-key="jxh-li4">Launched a B2B sports event SaaS service (2021-2022), driving user growth and client satisfaction</li>
+                            <li class="lang" data-key="jxh-li5">Designed prediction systems and automated copy trading features, leveraging data analytics to enhance reliability and user engagement</li>
+                            <li class="lang" data-key="jxh-li6">Introduced cross-device synchronization (OneSign) and multilingual adaptation, reducing user entry barriers</li>
+                            <li class="lang" data-key="jxh-li7">Implemented OKR management within the department, improving team morale and efficiency</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- ETtoday -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2017 - 2019</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title lang" data-key="et-title">Product Manager</h3>
+                        <span class="timeline-company">ETtoday New Media Holding Co., Ltd.</span>
+                        <p class="timeline-description lang" data-key="et-desc">Media/data/UI/Deep learning/e-commerce</p>
+                        <ul class="timeline-highlights">
+                            <li class="lang" data-key="et-li1">Managed ETtoday News Cloud, Star Cloud, and ET Star Cloud (Mainland China) product development and operations</li>
+                            <li class="lang" data-key="et-li2">Leveraged user behavior and click-through rate analytics to drive data-driven product improvements</li>
+                            <li class="lang" data-key="et-li3">Executed multi-channel promotions and UX optimizations, increasing app installations by 35% to 7M</li>
+                            <li class="lang" data-key="et-li4">Achieved first place in three primary ranking metrics for Taiwan media apps in 2018</li>
+                            <li class="lang" data-key="et-li5">Proposed UI/UX enhancements, improving interface intuitiveness and usability, resulting in a 15% increase in user retention</li>
+                            <li class="lang" data-key="et-li6">Collaborated with ETmall, optimizing in-app monetization and interaction mechanisms, increasing user retention by 30%</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Fullerton -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2015 - 2017</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title lang" data-key="full-title">Product Manager & UI/UX Design Engineer</h3>
+                        <span class="timeline-company">Fullerton Technology</span>
+                        <p class="timeline-description lang" data-key="full-desc">UI(RWD/App)/Information Architecture/SEO/Project Manager</p>
+                        <ul class="timeline-highlights">
+                            <li class="lang" data-key="full-li1">Led EZding movie ticketing website and Tripitta hotel booking platform development</li>
+                            <li class="lang" data-key="full-li2">Redesigned EZding's ticketing process, increasing ticket sales by 85% within three months</li>
+                            <li class="lang" data-key="full-li3">Integrated financial reconciliation and banking payment systems, improving transaction accuracy</li>
+                            <li class="lang" data-key="full-li4">Managed Tripitta's transition from an EZding sub-brand to an independent hotel booking platform</li>
+                            <li class="lang" data-key="full-li5">Integrated Expedia, Agoda, Ctrip, and Mafengwo for affiliate marketing expansion</li>
+                            <li class="lang" data-key="full-li6">Optimized user experience and satisfaction, increasing website traffic and user retention by 40%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <h2 class="section-title lang" data-key="skills-title">Professional Skills</h2>
+            
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="skill-title lang" data-key="skill1-title">Product Strategy</h3>
+                    <ul class="skill-list">
+                        <li class="lang" data-key="skill1-li1">Product Roadmapping</li>
+                        <li class="lang" data-key="skill1-li2">Market Analysis & Positioning</li>
+                        <li class="lang" data-key="skill1-li3">User Growth Strategy</li>
+                        <li class="lang" data-key="skill1-li4">Business Model Design</li>
+                        <li class="lang" data-key="skill1-li5">Fundraising & Investment</li>
+                        <li class="lang" data-key="skill1-li6">OKR Management</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="skill-title lang" data-key="skill2-title">Technology Integration</h3>
+                    <ul class="skill-list">
+                        <li class="lang" data-key="skill2-li1">AI & Machine Learning (LLM, TTS)</li>
+                        <li class="lang" data-key="skill2-li2">Blockchain & Web3 Technologies</li>
+                        <li class="lang" data-key="skill2-li3">Automation Systems Development</li>
+                        <li class="lang" data-key="skill2-li4">API Design & Integration</li>
+                        <li class="lang" data-key="skill2-li5">SaaS Platform Development</li>
+                        <li class="lang" data-key="skill2-li6">Data Analytics & Algorithms</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3 class="skill-title lang" data-key="skill3-title">Cross-border Operations</h3>
+                    <ul class="skill-list">
+                        <li class="lang" data-key="skill3-li1">Cross-cultural Team Management</li>
+                        <li class="lang" data-key="skill3-li2">International Market Expansion</li>
+                        <li class="lang" data-key="skill3-li3">Multilingual Product Localization</li>
+                        <li class="lang" data-key="skill3-li4">Global Payment Systems</li>
+                        <li class="lang" data-key="skill3-li5">International Compliance</li>
+                        <li class="lang" data-key="skill3-li6">Remote Collaboration Optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <h2 class="section-title lang" data-key="projects-title">Side Projects</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3 class="project-title lang" data-key="project1-title">Multi-Exchange Feature Development</h3>
+                    <div class="project-tags">
+                        <span class="project-tag lang" data-key="tag-exchange">#Exchange</span>
+                        <span class="project-tag lang" data-key="tag-web3">#Web3</span>
+                        <span class="project-tag lang" data-key="tag-multilang">#Multi-language</span>
+                    </div>
+                    <p class="project-description lang" data-key="project1-desc">
+                        Researched, analyzed, and planned exchange functionalities for multi-language regions. Developed architecture for compliant trading systems across different regulatory environments.
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <h3 class="project-title lang" data-key="project2-title">AppleCensorShip</h3>
+                    <div class="project-tags">
+                        <span class="project-tag lang" data-key="tag-ux">#UX Design</span>
+                        <span class="project-tag lang" data-key="tag-npo">#NPO</span>
+                        <span class="project-tag lang" data-key="tag-info">#Information Freedom</span>
+                    </div>
+                    <p class="project-description lang" data-key="project2-desc">
+                        Managed Apple censorship website, emphasizing Apple's impact on information access and privacy. Created data visualizations showing global impact of content moderation policies.
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <h3 class="project-title lang" data-key="project3-title">B-Cat Blog</h3>
+                    <div class="project-tags">
+                        <span class="project-tag lang" data-key="tag-blog">#Tech Blog</span>
+                        <span class="project-tag lang" data-key="tag-seo">#SEO</span>
+                        <span class="project-tag lang" data-key="tag-wp">#WordPress</span>
+                    </div>
+                    <p class="project-description lang" data-key="project3-desc">
+                        Founded and managed SEO & WordPress tech blog, providing real-time updates and insights. Built a professional tech community with over 10,000 monthly visitors.
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="project-title lang" data-key="project4-title">Encore Days</h3>
+                    <div class="project-tags">
+                        <span class="project-tag lang" data-key="tag-social">#Social App</span>
+                        <span class="project-tag lang" data-key="tag-senior">#Senior Market</span>
+                        <span class="project-tag lang" data-key="tag-google">#Google Incubator</span>
+                    </div>
+                    <p class="project-description lang" data-key="project4-desc">
+                        Managed Encore social app for seniors, growing membership by 10K in three months and participating in Google Taiwan's Incubator Program. Designed senior-friendly UI/UX.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title lang" data-key="contact-title">Contact Me</h2>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3 class="lang" data-key="contact-email">Email</h3>
+                            <a href="mailto:lovewish2260@gmail.com">lovewish2260@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3 class="lang" data-key="contact-phone">Phone</h3>
+                            <a href="tel:+886972857690">+886-972857690</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3 class="lang" data-key="contact-location">Location</h3>
+                            <p class="lang" data-key="location-taiwan">Taiwan</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3 class="lang" data-key="contact-resume">Resume Download</h3>
+                            <a href="#">2025 CV en (1).pdf</a><br>
+                            <a href="#">2025 CV zh (1).pdf</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name" class="lang" data-key="form-name">Name</label>
+                            <input type="text" id="name-en" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="lang" data-key="form-email">Email</label>
+                            <input type="email" id="email-en" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="lang" data-key="form-subject">Subject</label>
+                            <input type="text" id="subject-en" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="lang" data-key="form-message">Message</label>
+                            <textarea id="message-en" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn lang" data-key="form-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 頁尾 -->
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-medium-m"></i></a>
+        </div>
+        <p class="copyright">© 2024 <span class="lang" data-key="copyright">許倍祺(Jerry Hsu). 保留所有權利</span></p>
+    </footer>
+
+    <script>
+        // 语言切换功能
+        const langToggle = document.getElementById('langToggle');
+        const zhContent = document.getElementById('zh-content');
+        const enContent = document.getElementById('en-content');
+        let currentLang = 'zh';
+        
+        // 初始设置
+        document.documentElement.lang = 'zh-TW';
+        zhContent.classList.add('active');
+        enContent.classList.remove('active');
+        
+        langToggle.addEventListener('click', function() {
+            if (currentLang === 'zh') {
+                // 切换到英文
+                document.documentElement.lang = 'en';
+                zhContent.classList.remove('active');
+                enContent.classList.add('active');
+                currentLang = 'en';
+            } else {
+                // 切换到中文
+                document.documentElement.lang = 'zh-TW';
+                enContent.classList.remove('active');
+                zhContent.classList.add('active');
+                currentLang = 'zh';
+            }
+        });
+        
+        // 滚动动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 时间线动画
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const skillCards = document.querySelectorAll('.skill-card');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            // 观察器回调函数
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+            
+            // 创建观察器
+            const observer = new IntersectionObserver(observerCallback, {
+                root: null,
+                threshold: 0.2,
+                rootMargin: '0px'
+            });
+            
+            // 观察所有时间线项目和技能卡片
+            timelineItems.forEach(item => observer.observe(item));
+            skillCards.forEach(card => observer.observe(card));
+            projectCards.forEach(card => observer.observe(card));
+            
+            // 平滑滚动导航
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // 背景粒子效果
+            const bgContainer = document.querySelector('.hero-bg-elements');
+            for (let i = 0; i < 8; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('bg-circle');
+                
+                // 随机位置和大小
+                const size = Math.random() * 100 + 50;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.top = `${posY}%`;
+                particle.style.left = `${posX}%`;
+                
+                // 随机动画延迟
+                const delay = Math.random() * 5;
+                particle.style.animationDelay = `${delay}s`;
+                
+                bgContainer.appendChild(particle);
+            }
+        });
+    </script>
+</body>
+</html>
